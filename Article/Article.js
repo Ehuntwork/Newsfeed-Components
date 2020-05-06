@@ -110,4 +110,32 @@ const data = [
   Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-*/
+*/function articleMaker(objNum){
+  let articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+
+  let articleH2 = document.createElement('h2');
+  articleH2.textContent = data[objNum].title;
+  articleDiv.appendChild(articleH2);
+
+  let articleP = document.createElement('p');
+  articleP.classList.add('date');
+  articleP.textContent = data[objNum].date;
+  articleDiv.appendChild(articleP);
+
+  let articleFirstP = document.createElement('p');
+  articleFirstP.textContent = data[objNum].firstParagraph;
+  articleDiv.appendChild(articleFirstP);
+
+  let articleSecondP = document.createElement('p');
+  articleSecondP.textContent = data[objNum].secondParagraph;
+  articleDiv.appendChild(articleSecondP);
+
+  let articleThirdP = document.createElement('p');
+  articleThirdP.textContent = data[objNum].thirdParagraph;
+  articleDiv.appendChild(articleThirdP);
+
+  return articleDiv;
+}
+
+console.log(articleMaker(0))
