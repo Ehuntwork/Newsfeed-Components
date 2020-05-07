@@ -85,6 +85,22 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Emily test',
+    date: 'Jan 1st, 2019',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
@@ -110,4 +126,49 @@ const data = [
   Step 4: Outside your function, loop over the data. At each iteration you'll use your component to create an article and append it to the DOM inside the 'articles' div.
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
-*/
+*/function articleMaker(objNum){
+  let articleDiv = document.createElement('div');
+  articleDiv.classList.add('article');
+
+  let articleH2 = document.createElement('h2');
+  articleH2.textContent = data[objNum].title;
+  articleDiv.appendChild(articleH2);
+
+  let articleP = document.createElement('p');
+  articleP.classList.add('date');
+  articleP.textContent = data[objNum].date;
+  articleDiv.appendChild(articleP);
+
+  let articleFirstP = document.createElement('p');
+  articleFirstP.textContent = data[objNum].firstParagraph;
+  articleDiv.appendChild(articleFirstP);
+
+  let articleSecondP = document.createElement('p');
+  articleSecondP.textContent = data[objNum].secondParagraph;
+  articleDiv.appendChild(articleSecondP);
+
+  let articleThirdP = document.createElement('p');
+  articleThirdP.textContent = data[objNum].thirdParagraph;
+  articleDiv.appendChild(articleThirdP);
+
+  let articleSpan = document.createElement('span');
+  articleSpan.classList.add('expandButton');
+  articleSpan.textContent = 'Click Here!'
+  articleDiv.appendChild(articleSpan);
+
+  articleSpan.addEventListener('click', ()=>{
+    if(articleDiv.classList.contains('article-open') === false){
+      articleDiv.classList.add('article-open')
+    }else{
+      articleDiv.classList.remove('article-open')
+    }
+  })
+
+  return articleDiv;
+}
+
+let articles = document.querySelector('.articles');
+for(let i = 0; i < data.length; i++){
+  let articleAdder = articleMaker(i);
+  articles.appendChild(articleAdder);
+}
