@@ -153,6 +153,7 @@ const data = [
 
   let articleSpan = document.createElement('span');
   articleSpan.classList.add('expandButton');
+  articleSpan.textContent = 'Click Here!'
   articleDiv.appendChild(articleSpan);
 
   articleSpan.addEventListener('click', ()=>{
@@ -165,7 +166,6 @@ const data = [
 
   return articleDiv;
 }
-
 
 let articles = document.querySelector('.articles');
 for(let i = 0; i < data.length; i++){
