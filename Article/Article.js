@@ -155,7 +155,7 @@ const data = [
   articleSpan.classList.add('expandButton');
   articleDiv.appendChild(articleSpan);
 
-  articleSpan.addEventListener('click', ()=>{
+  articleSpan.addEventListener('mouseenter', ()=>{
     if(articleDiv.classList.contains('article-open') === false){
       articleDiv.classList.add('article-open')
     }else{

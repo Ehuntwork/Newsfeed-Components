@@ -8,7 +8,7 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
-
+console.log(menuItems)
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
 
@@ -31,3 +31,34 @@ let menuItems = [
 
   Step 6: Use 'menuMaker' to create a menu using the 'menuItems' array, and append the returned markup to the DOM.
 */
+
+function menuMaker(array){
+  let menuDiv = document.createElement('div');
+  menuDiv.classList.add('menu');
+
+  let menuUl = document.createElement('ul');
+  menuDiv.appendChild(menuUl);
+
+
+  function listCreator(num){
+    let list = document.createElement('li');
+    list.textContent = array[num];
+    return list;
+  }
+  for(let i = 0; i < array.length ; i++){
+    let listItem = listCreator(i);
+    menuDiv.appendChild(listItem);
+  }
+
+  let menuBttn = document.querySelector('.menu-button');
+  menuBttn.addEventListener('click',()=>{
+    if(menuDiv.classList.contains('menu--open') === false){
+      menuDiv.classList.add('menu--open')
+    }else{
+      menuDiv.classList.remove('menu--open')
+    }
+  })
+
+  return menuDiv;
+}
+ console.log(menuMaker(menuItems))
