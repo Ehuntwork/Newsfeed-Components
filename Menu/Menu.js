@@ -8,7 +8,6 @@ let menuItems = [
   'Music',
   'Log Out'
 ];
-console.log(menuItems)
 /* 
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
 
@@ -61,4 +60,7 @@ function menuMaker(array){
 
   return menuDiv;
 }
- console.log(menuMaker(menuItems))
+
+
+let nav = document.querySelector('.header');
+nav.appendChild(menuMaker(menuItems))
